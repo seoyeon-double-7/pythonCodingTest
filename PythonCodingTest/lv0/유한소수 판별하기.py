@@ -1,12 +1,13 @@
-key = []
-b=20
-d = 2
-while(d <= b):
-    if b % d == 0:
-        key.append(d)
-        b = b//d
-    else:
-        d+=1
-answer = list(set(key))
+from math import gcd
 
-print(answer)
+
+def solution(a, b):
+    #     b를 a,b의 최소공약수로 나눠주기
+    b //= gcd(a, b)
+
+    while (b % 2 == 0):
+        b //= 2  # 2로 나눠떨어질때까지 나눠주기
+    while (b % 5 == 0):
+        b //= 5  # 5로 나눠떨어질때까지 나눠주기
+
+    return 1 if b == 1 else 2
