@@ -28,12 +28,31 @@
 # 	else: # 최빈값이 1개이면 해당 숫자를 리턴
 # 		return count.index(max(count))
 
+# from collections import Counter
+#
+#
+# def solution(array):
+#     cnt = Counter(array).items()
+#     li = sorted(cnt, key=lambda x: -x[1])
+#     if len(li) == 1:
+#         return li[0][0]
+#     return li[0][0] if li[0][1] != li[1][1] else -1
+
+
 from collections import Counter
 
+def modefinder(numbers):
+    c = Counter(numbers)
+    order = c.most_common()
+    maximum = order[0][1]
 
-def solution(array):
-    cnt = Counter(array).items()
-    li = sorted(cnt, key=lambda x: -x[1])
-    if len(li) == 1:
-        return li[0][0]
-    return li[0][0] if li[0][1] != li[1][1] else -1
+    print(max)
+
+    modes = []
+    # order에 있는 크키값이 같으면 modes에 추가해주기
+    for num in order:
+        if num[1] == maximum:
+            modes.append(num[0])
+    return modes
+
+print(modefinder([1,1,2,2]))
